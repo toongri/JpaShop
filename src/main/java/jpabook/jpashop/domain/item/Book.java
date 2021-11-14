@@ -13,4 +13,8 @@ public class Book extends Item {
 
     private String author;
     private String isbn;
+
+    public void out() {
+        System.out.println("fuck");
+    }
 }
