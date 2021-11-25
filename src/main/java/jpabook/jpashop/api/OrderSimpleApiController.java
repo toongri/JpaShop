@@ -32,7 +32,7 @@ public class OrderSimpleApiController {
     @GetMapping("/api/v1/simple-orders")
     public List<Order> orderV1() {
 
-        List<Order> all = orderRepository.findAllByString(new OrderSearch());
+        List<Order> all = orderRepository.findAll(new OrderSearch());
         return all;
     }
 
@@ -40,7 +40,7 @@ public class OrderSimpleApiController {
     public List<SimpleOrderDto> ordersV2() {
         //ORDER 2개 -> (1 + N개 문제 -> 1개의 셀렉을 통해 여러가지 행을 가져올때 생기는 문제
         //현재 문제의 경우 경확히는 1 (order) + N (member) + N (address) 총 1 + 2n의 문제다.
-        List<Order> orders = orderRepository.findAllByString(new OrderSearch());
+        List<Order> orders = orderRepository.findAll(new OrderSearch());
         List<SimpleOrderDto> result = orders.stream()
                 .map(o -> new SimpleOrderDto(o))
                 .collect(Collectors.toList());
